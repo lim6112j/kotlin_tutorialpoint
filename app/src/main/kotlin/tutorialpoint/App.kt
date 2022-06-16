@@ -25,6 +25,27 @@ fun multi(a: Int = 1, b: Int = 1): Int {
     return a * b
 }
 
+fun String.spaceToCamelCase() {
+    // ...
+}
+
+object Resource {
+    val name = "Name"
+}
+
+abstract class MyAbstractClass {
+    public abstract fun doSomethin()
+    public abstract fun sleep()
+}
+
+fun myTransform(color: String): Int =
+        when (color) {
+            "red" -> 1
+            "yellow" -> 2
+            "blue" -> 3
+            else -> throw IllegalArgumentException("argument type is not string")
+        }
+
 fun main() {
     println(App().greeting)
     println(describe(1))
@@ -57,4 +78,16 @@ fun main() {
     }
     val p: String by lazy { "hello" }
     println("lazy val p = $p")
+
+    // val myObject =
+    // object : MyAbstractClass() {
+    // override fun doSomething() {
+    // println("do something")
+    // }
+    // override fun sleep() {
+    // println("sleep")
+    // }
+    // }
+    // myObject.doSomething()
+    print("trasform function : when single expression result : ${myTransform("red")}")
 }
