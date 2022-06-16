@@ -10,6 +10,51 @@ class App {
         }
 }
 
+data class Customer(val name: String, val age: Int)
+
+fun describe(value: Any): String =
+        when (value) {
+            1 -> "one"
+            "hello" -> "greeting"
+            is Long -> "value is long"
+            !is String -> "value is not string"
+            else -> "Unknown"
+        }
+
+fun multi(a: Int = 1, b: Int = 1): Int {
+    return a * b
+}
+
 fun main() {
     println(App().greeting)
+    println(describe(1))
+    for (x in 9 downTo 0 step 3) {
+        println(x)
+    }
+    val items = listOf(1, 2, 3, 4)
+    when {
+        1 in items -> println("juicy")
+        6 in items -> println("boo")
+    }
+    val fruits = listOf("banana", "avocado", "apple", "kiwifruit")
+    fruits.filter { it.startsWith("a") }.sortedBy { it }.map { it.uppercase() }.forEach {
+        println(it)
+    }
+    val customer = Customer("lim", 22)
+    println(customer.hashCode())
+    println("a * b = ${multi(4,5)}")
+    val positive = items.filter { x -> x > 0 }
+    val negative = items.filter { it < 0 }
+    println("items positive $positive")
+    println("items negative $negative")
+
+    // map
+    val map = mapOf("a" to 1, "b" to 2, "c" to 3)
+    println("map of items : $map")
+    println("map[a] is ${map["a"]}")
+    for ((k, v) in map) {
+        println("$k -> $v")
+    }
+    val p: String by lazy { "hello" }
+    println("lazy val p = $p")
 }
