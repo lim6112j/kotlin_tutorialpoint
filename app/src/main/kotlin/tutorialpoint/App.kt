@@ -45,6 +45,11 @@ fun myTransform(color: String): Int =
             "blue" -> 3
             else -> throw IllegalArgumentException("argument type is not string")
         }
+/**
+ * @param test int, string
+ * @return class
+ */
+class Person(id: Int, name: String)
 
 fun main() {
     println(App().greeting)
