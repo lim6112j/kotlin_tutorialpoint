@@ -94,5 +94,8 @@ fun main() {
     // }
     // }
     // myObject.doSomething()
-    print("trasform function : when single expression result : ${myTransform("red")}")
+    println("trasform function : when single expression result : ${myTransform("red")}")
+    // collection
+    val numbers = listOf(0, 1, 2, 3, 4)
+    println("list: ${numbers}")
 }
