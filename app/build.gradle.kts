@@ -34,6 +34,8 @@ dependencies {
 
     // Use the Kotlin JUnit integration.
     testImplementation("org.jetbrains.kotlin:kotlin-test-junit")
+    // rxkotlin
+    implementation("io.reactivex.rxjava3:rxkotlin:3.0.1")
 }
 
 application {
