@@ -5,7 +5,7 @@ package tutorialpoint
 
 import io.reactivex.rxjava3.subjects.Subject
 import io.reactivex.rxjava3.subjects.PublishSubject
-import io.reactivex.rxjava3.Observable.Observable
+import io.reactivex.rxjava3.core.Observable
 class App {
     val greeting: String
         get() {

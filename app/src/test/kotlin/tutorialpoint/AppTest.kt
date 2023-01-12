@@ -6,6 +6,7 @@ package tutorialpoint
 import kotlin.test.Test
 import kotlin.test.assertNotNull
 import kotlin.test.assertFails
+import kotlin.test.assertEquals
 import tutorialpoint.ch02.*
 class AppTest {
     @Test fun appHasAGreeting() {
@@ -23,5 +24,11 @@ class AppTest {
     }
     @Test fun isSortedTailrec2() {
         assert(!isSortedRec(listOf(2,2,1), order))
+    }
+    @Test fun formatFactorial() {
+        assertEquals(Example.formatAbs(-42), "The absolute value of -42 is 42")
+    }
+    @Test fun formatFactorial2() {
+        assertEquals(Example.formatFactorial(5), "The factorial of 5 is 120")
     }
 }

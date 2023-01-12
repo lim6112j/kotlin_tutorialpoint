@@ -22,3 +22,23 @@ fun <A> isSortedRec(aa: List<A>, order: (A, A) -> Boolean): Boolean {
 }
 
 val order: (Int, Int) -> Boolean = { a, b -> a > b }
+object Example {
+  private fun abs(n: Int) : Int =
+    if(n<0) -n
+    else n
+  private fun factorial(i: Int): Int {
+    fun go(n: Int, acc: Int): Int =
+      if (n <= 0) acc
+      else go(n-1, n * acc)
+    return go(i, 1)
+  }
+  fun formatAbs(x: Int): String {
+    val msg = "The absolute value of %d is %d"
+    return msg.format(x, abs(x))
+  }
+  fun formatFactorial(x: Int): String {
+    val msg = "The factorial of %d is %d"
+    return msg.format(x, factorial(x))
+  }
+}
+
