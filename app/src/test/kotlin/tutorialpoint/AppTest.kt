@@ -31,4 +31,11 @@ class AppTest {
     @Test fun formatFactorial2() {
         assertEquals(Example.formatFactorial(5), "The factorial of 5 is 120")
     }
+    @Test fun fibo1() {
+        assertEquals(fibo(3), 2)
+        assertEquals(fibo(4), 3)
+        assertEquals(fibo(10), 55)
+        assertEquals(fiboRec(3), 2)
+        assertEquals(fiboRec(10), 55)
+    }
 }

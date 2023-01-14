@@ -1,4 +1,21 @@
 package tutorialpoint.ch02
+fun fibo(i: Int): Int {
+  fun go(n: Int): Int =
+    when {
+      n == 0 -> 0
+      n == 1 -> 1
+      else -> go(n-1) + go(n-2)
+    }
+  return go(i)
+}
+fun fiboRec(i: Int) : Int {
+  tailrec fun go(n: Int, prev: Int, pprev: Int) : Int =
+    when {
+      n == 0 -> pprev
+      else -> go(n-1, prev+pprev, prev)
+    }
+  return go(i, 1, 0)
+}
 val <A> List<A>.head: A
     get() = first()
 val <A> List<A>.tail: List<A>
