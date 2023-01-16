@@ -39,6 +39,10 @@ fun <A> isSortedRec(aa: List<A>, order: (A, A) -> Boolean): Boolean {
 }
 
 val order: (Int, Int) -> Boolean = { a, b -> a > b }
+fun <A, B, C> partial1(a: A, f: (A,B) -> C): (B)->C =
+  { b -> f(a, b)}
+fun <A, B, C> curry(f: (A, B) -> C): (A) -> (B) -> C =
+  { a -> {b -> f(a, b)}}
 object Example {
   private fun abs(n: Int) : Int =
     if(n<0) -n

@@ -38,4 +38,13 @@ class AppTest {
         assertEquals(fiboRec(3), 2)
         assertEquals(fiboRec(10), 55)
     }
+    @Test fun currying() {
+        
+        val addFunc = {a: Int, b: Int -> a + b}
+        val multiFunc = {a: Int, b: Int -> a * b}
+        val curryedSum = curry(addFunc)
+        val curryedMulti = curry(multiFunc)
+        assertEquals(curryedSum(1)(2), 3)
+        assertEquals(curryedMulti(1)(2), 2)
+    }
 }
