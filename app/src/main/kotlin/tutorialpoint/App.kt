@@ -7,6 +7,7 @@ import io.reactivex.rxjava3.subjects.Subject
 import io.reactivex.rxjava3.subjects.PublishSubject
 import io.reactivex.rxjava3.core.Observable
 import tutorialpoint.ch02.*
+import tutorialpoint.ch03.*
 class App {
     val greeting: String
         get() {
@@ -112,4 +113,6 @@ fun main() {
       .subscribe { value -> println(value)}
     println("fibo(4) is ${fibo(4)}")
     println("fiboRec(10) is ${fiboRec(10)}")
+    val data = Cons(1, Cons(2, Nil))
+    println("data structure list ${data}")
 }
