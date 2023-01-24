@@ -39,12 +39,25 @@ class AppTest {
         assertEquals(fiboRec(10), 55)
     }
     @Test fun currying() {
-        
         val addFunc = {a: Int, b: Int -> a + b}
         val multiFunc = {a: Int, b: Int -> a * b}
         val curryedSum = curry(addFunc)
         val curryedMulti = curry(multiFunc)
         assertEquals(curryedSum(1)(2), 3)
         assertEquals(curryedMulti(1)(2), 2)
+    }
+    @Test fun uncurrying() {
+        val addFunc = {a: Int, b: Int -> a + b}
+        val curryedSum = curry(addFunc)
+        val uncurryiedSum = uncurry(curryedSum)
+        assertEquals(uncurryiedSum(2,3), 5)
+    }
+    @Test fun `composing`() {
+        val plusOne = {x: Int -> x + 1}
+        val multTwo = {x: Int -> x * 2}
+        val composedOnePlusTwoMult = compose(plusOne, multTwo)
+        val composedOnePlusTwoMultLeftRight = composeLeftRight(plusOne, multTwo)
+        assertEquals(composedOnePlusTwoMult(4), 9)
+        assertEquals(composedOnePlusTwoMultLeftRight(4), 10)
     }
 }
