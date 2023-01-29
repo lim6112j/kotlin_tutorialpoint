@@ -8,6 +8,8 @@ import io.reactivex.rxjava3.subjects.PublishSubject
 import io.reactivex.rxjava3.core.Observable
 import tutorialpoint.ch02.*
 import tutorialpoint.ch03.*
+import tutorialpoint.MySystem
+
 class App {
     val greeting: String
         get() {
@@ -55,7 +57,28 @@ fun myTransform(color: String): Int =
  * @return class
  */
 class Person(id: Int, name: String)
-
+// discriminated union
+sealed class MySystem {
+    object Mac : MySystem()
+    object Win : MySystem()
+}
+sealed class MyProduct {
+    object Button : MyProduct()
+    object Checkbox : MyProduct()
+}
+fun UnionPrint( system: MySystem): String {
+    return when(system) {
+        is MySystem.Mac -> "mac system"
+        is MySystem.Win -> "window system"
+    }
+}
+fun factory( system: MySystem, product: MyProduct): String {
+    return when {
+        system is MySystem.Mac && product is  MyProduct.Button -> "mac system making button"
+        system is MySystem.Win && product is  MyProduct.Checkbox -> "window system making checkbox"
+        else -> "nothing"
+    }
+}
 fun main() {
     println(App().greeting)
     println(describe(1))
@@ -115,4 +138,6 @@ fun main() {
     println("fiboRec(10) is ${fiboRec(10)}")
     val data = Cons(1, Cons(2, Nil))
     println("data structure list ${data}")
+    val system = MySystem.Mac
+    println(UnionPrint(system))
 }
