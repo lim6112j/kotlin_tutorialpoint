@@ -138,6 +138,7 @@ fun main() {
     println("fiboRec(10) is ${fiboRec(10)}")
     val data = Cons(1, Cons(2, Nil))
     println("data structure list ${data}")
-    val system = MySystem.Mac
-    println(UnionPrint(system))
+    val system = MySystem.Win
+    val product = MyProduct.Checkbox
+    println(factory(system, product))
 }
