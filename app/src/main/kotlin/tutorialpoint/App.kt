@@ -72,6 +72,16 @@ fun UnionPrint( system: MySystem): String {
         is MySystem.Win -> "window system"
     }
 }
+/**
+ * A function of *Factory*.
+ *
+ * abstract factory clone in functional code
+ *
+ * @param MySystem the type of a system running code.
+ * @param MyProduct the type of a ui component .
+ * @property n/a 
+ * @constructor n/a
+ */
 fun factory( system: MySystem, product: MyProduct): String {
     return when {
         system is MySystem.Mac && product is  MyProduct.Button -> "mac system making button"
