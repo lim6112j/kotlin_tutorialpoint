@@ -58,6 +58,17 @@ fun myTransform(color: String): Int =
  */
 class Person(id: Int, name: String)
 // discriminated union
+
+/**
+ * A function of *Factory*.
+ *
+ * abstract factory clone in functional code
+ *
+ * @param n/a the type of a system running code.
+ * @param n/a the type of a ui component .
+ * @property n/a 
+ * @constructor n/a
+*/
 sealed class MySystem {
     object Mac : MySystem()
     object Win : MySystem()
@@ -72,16 +83,12 @@ fun UnionPrint( system: MySystem): String {
         is MySystem.Win -> "window system"
     }
 }
-/**
- * A function of *Factory*.
- *
- * abstract factory clone in functional code
- *
- * @param MySystem the type of a system running code.
- * @param MyProduct the type of a ui component .
- * @property n/a 
- * @constructor n/a
- */
+    /**
+     * creates UI component  to this system.
+     * @param *system* the type of a system running code.
+     * @param *product* the type of a ui component .
+     * @return *string* .
+     */
 fun factory( system: MySystem, product: MyProduct): String {
     return when {
         system is MySystem.Mac && product is  MyProduct.Button -> "mac system making button"
