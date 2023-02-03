@@ -33,4 +33,9 @@ class Ch03Test {
     assertEquals(List.dropWhile(Nil, {x -> x==4}), Nil)
     assertEquals(List.dropWhile(List.of(1,2,3), {x -> x==0}), Nil)
   }
+  @Test fun initTest() {
+    assertEquals(List.init(List.of(1,2,3,4)), List.of(1,2,3))
+    assertEquals(List.init(List.of(1)), Nil)
+    assertEquals(List.init(Nil), Nil)
+  }
 }

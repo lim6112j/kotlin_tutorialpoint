@@ -7,6 +7,7 @@ import io.reactivex.rxjava3.subjects.Subject
 import io.reactivex.rxjava3.subjects.PublishSubject
 import io.reactivex.rxjava3.core.Observable
 import tutorialpoint.ch02.*
+import tutorialpoint.ch03.List
 import tutorialpoint.ch03.*
 import tutorialpoint.MySystem
 
@@ -153,9 +154,12 @@ fun main() {
       .subscribe { value -> println(value)}
     println("fibo(4) is ${fibo(4)}")
     println("fiboRec(10) is ${fiboRec(10)}")
-    val data = Cons(1, Cons(2, Nil))
-    println("data structure list ${data}")
     val system = MySystem.Win
     val product = MyProduct.Checkbox
     println(factory(system, product))
+    // List sealed class in ch03
+    val data = Cons(1, Cons(2, Nil))
+    println("data structure list ${data}")
+    println(List.dropWhile(List.of(1,2,3), {x-> x==2}))
+    println(List.init(List.of(1,2,3,10)))
 }
