@@ -9,15 +9,44 @@ sealed class List<out A> {
       when (ints) {
         is Nil -> 0
         is Cons -> ints.head + sum(ints.tail)
-        else -> -1
     }
     fun product(doubles: List<Double>): Double =
       when (doubles) {
         is Nil -> 1.0
         is Cons -> doubles.head * product(doubles.tail)
-        else -> -1.0
+      }
+    fun <A> tail(xs: List<A>): List<A> =
+      when (xs) {
+        is Nil -> Nil
+        is Cons -> xs.tail
+      }
+    fun <A> head(xs: List<A>): A? =
+      when(xs) {
+        is Nil -> null
+        is Cons -> xs.head
+      }
+    fun <A> setHead(xs: List<A>, x: A) : List<A> =
+      when {
+        xs is Nil && x is Nil -> Nil
+        xs is Nil -> Cons(x, Nil)
+        x is Nil -> xs
+        else -> Cons(x, xs)
+      }
+    tailrec fun <A> drop(l: List<A>, n: Int) :List<A> =
+      when {
+        l is Nil -> Nil
+        n == 0 -> l
+        else -> drop(tail(l), n-1)
+      }
+    fun <A> dropWhile(l: List<A>, f: (A?) -> Boolean) : List<A> =
+      when {
+        l is Nil -> Nil
+        //l is Cons && f(l.head) == true -> l.tail
+        f?.invoke(head(l)) == true -> tail(l)
+        else -> dropWhile(tail(l), f)
       }
   }
 }
 object Nil : List<Nothing>()
 data class Cons<out A>(val head: A, val tail: List<A>) : List<A>()
+
