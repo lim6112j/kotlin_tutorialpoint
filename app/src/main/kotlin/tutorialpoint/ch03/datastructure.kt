@@ -41,13 +41,13 @@ public sealed class List<out A> {
       when {
         l is Nil -> Nil
         //l is Cons && f(l.head) == true -> l.tail
-        f?.invoke(head(l)) == true -> tail(l)
+        f.invoke(head(l)) == true -> tail(l)
         else -> dropWhile(tail(l), f)
       }
-    fun<A> init(l: List<A>) : List<A> =
+    fun<A> init(l: List<A>) : List<A?> =
       when {
         l is Nil || tail(l) is Nil -> Nil
-        else -> Cons(head(l), init(tail(l))) as List<A>
+        else -> Cons(head(l), init(tail(l))) 
       }
     fun <A,B> foldRight(l:List<A>, acc: B , f: (A,B) -> B) : B =
       when (l) {
