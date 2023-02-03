@@ -162,4 +162,7 @@ fun main() {
     println("data structure list ${data}")
     println(List.dropWhile(List.of(1,2,3), {x-> x==2}))
     println(List.init(List.of(1,2,3,10)))
+    println(List.foldRight(List.of(1,2,3,4,5,6,7,8,9,10), 0, {x,y -> x + y}))
+    println(List.foldRight(List.of(1,2,3,4,5,6,7,8,9,10), 1, {x,y -> x * y}))
+    println(List.foldLeft(List.of(1,2,3,4,5,6,7,8,9,10), 0, {x,y -> x + y}))
 }

@@ -37,7 +37,7 @@ public sealed class List<out A> {
         n == 0 -> l
         else -> drop(tail(l), n-1)
       }
-    fun <A> dropWhile(l: List<A>, f: (A?) -> Boolean) : List<A> =
+    tailrec fun <A> dropWhile(l: List<A>, f: (A?) -> Boolean) : List<A> =
       when {
         l is Nil -> Nil
         //l is Cons && f(l.head) == true -> l.tail
@@ -48,6 +48,16 @@ public sealed class List<out A> {
       when {
         l is Nil || tail(l) is Nil -> Nil
         else -> Cons(head(l), init(tail(l))) as List<A>
+      }
+    fun <A,B> foldRight(l:List<A>, acc: B , f: (A,B) -> B) : B =
+      when (l) {
+        is Nil -> acc
+        is Cons -> f(l.head, foldRight(l.tail, acc, f))
+      }
+    tailrec fun <A,B> foldLeft(l:List<A>, acc: B, f: (B, A) -> B) : B =
+      when (l) {
+        is Nil -> acc
+        is Cons -> foldLeft(l.tail, f(acc, l.head), f)
       }
   }
 }
