@@ -28,7 +28,6 @@ public sealed class List<out A> {
     fun <A> setHead(xs: List<A>, x: A) : List<A> =
       when {
         xs is Nil && x is Nil -> Nil
-        xs is Nil -> Cons(x, Nil)
         x is Nil -> xs
         else -> Cons(x, xs)
       }
