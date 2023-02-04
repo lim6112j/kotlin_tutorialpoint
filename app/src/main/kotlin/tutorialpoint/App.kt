@@ -3,57 +3,56 @@
  */
 package tutorialpoint
 
-import io.reactivex.rxjava3.subjects.Subject
-import io.reactivex.rxjava3.subjects.PublishSubject
 import io.reactivex.rxjava3.core.Observable
+import io.reactivex.rxjava3.subjects.PublishSubject
+import io.reactivex.rxjava3.subjects.Subject
 import tutorialpoint.ch02.*
-import tutorialpoint.ch03.List
 import tutorialpoint.ch03.*
-import tutorialpoint.MySystem
+import tutorialpoint.ch03.List
 import tutorialpoint.utils.*
 
 class App {
-    val greeting: String
-        get() {
-            return "Hello World!"
-        }
+  val greeting: String
+    get() {
+      return "Hello World!"
+    }
 }
 
 data class Customer(val name: String, val age: Int)
 
 fun describe(value: Any): String =
-        when (value) {
-            1 -> "one"
-            "hello" -> "greeting"
-            is Long -> "value is long"
-            !is String -> "value is not string"
-            else -> "Unknown"
-        }
+    when (value) {
+      1 -> "one"
+      "hello" -> "greeting"
+      is Long -> "value is long"
+      !is String -> "value is not string"
+      else -> "Unknown"
+    }
 
 fun multi(a: Int = 1, b: Int = 1): Int {
-    return a * b
+  return a * b
 }
 
 fun String.spaceToCamelCase() {
-    // ...
+  // ...
 }
 
 object Resource {
-    val name = "Name"
+  val name = "Name"
 }
 
 abstract class MyAbstractClass {
-    public abstract fun doSomethin()
-    public abstract fun sleep()
+  public abstract fun doSomethin()
+  public abstract fun sleep()
 }
 
 fun myTransform(color: String): Int =
-        when (color) {
-            "red" -> 1
-            "yellow" -> 2
-            "blue" -> 3
-            else -> throw IllegalArgumentException("argument type is not string")
-        }
+    when (color) {
+      "red" -> 1
+      "yellow" -> 2
+      "blue" -> 3
+      else -> throw IllegalArgumentException("argument type is not string")
+    }
 /**
  * @param test int, string
  * @return class
@@ -68,122 +67,128 @@ class Person(id: Int, name: String)
  *
  * @param n/a the type of a system running code.
  * @param n/a the type of a ui component .
- * @property n/a 
+ * @property n/a
  * @constructor n/a
-*/
+ */
 sealed class MySystem {
-    object Mac : MySystem()
-    object Win : MySystem()
+  object Mac : MySystem()
+  object Win : MySystem()
 }
+
 sealed class MyProduct {
-    object Button : MyProduct()
-    object Checkbox : MyProduct()
+  object Button : MyProduct()
+  object Checkbox : MyProduct()
 }
-fun UnionPrint( system: MySystem): String {
-    return when(system) {
-        is MySystem.Mac -> "mac system"
-        is MySystem.Win -> "window system"
-    }
+
+fun UnionPrint(system: MySystem): String {
+  return when (system) {
+    is MySystem.Mac -> "mac system"
+    is MySystem.Win -> "window system"
+  }
 }
-    /**
-     * creates UI component  to this system.
-     * @param *system* the type of a system running code.
-     * @param *product* the type of a ui component .
-     * @return *string* .
-     */
-fun factory( system: MySystem, product: MyProduct): String {
-    return when {
-        system is MySystem.Mac && product is  MyProduct.Button -> "mac system making button"
-        system is MySystem.Win && product is  MyProduct.Checkbox -> "window system making checkbox"
-        else -> "nothing"
-    }
+/**
+ * creates UI component to this system.
+ * @param *system* the type of a system running code.
+ * @param *product* the type of a ui component .
+ * @return *string* .
+ */
+fun factory(system: MySystem, product: MyProduct): String {
+  return when {
+    system is MySystem.Mac && product is MyProduct.Button -> "mac system making button"
+    system is MySystem.Win && product is MyProduct.Checkbox -> "window system making checkbox"
+    else -> "nothing"
+  }
 }
+
 fun main() {
-    println(App().greeting)
-    println(describe(1))
-    for (x in 9 downTo 0 step 3) {
-        println(x)
-    }
-    val items = listOf(1, 2, 3, 4)
-    when {
-        1 in items -> println("juicy")
-        6 in items -> println("boo")
-    }
-    val fruits = listOf("banana", "avocado", "apple", "kiwifruit")
-    fruits.filter { it.startsWith("a") }.sortedBy { it }.map { it.uppercase() }.forEach {
-        println(it)
-    }
-    val customer = Customer("lim", 22)
-    println(customer.hashCode())
-    println("a * b = ${multi(4,5)}")
-    val positive = items.filter { x -> x > 0 }
-    val negative = items.filter { it < 0 }
-    println("items positive $positive")
-    println("items negative $negative")
+  println(App().greeting)
+  println(describe(1))
+  for (x in 9 downTo 0 step 3) {
+    println(x)
+  }
+  val items = listOf(1, 2, 3, 4)
+  when {
+    1 in items -> println("juicy")
+    6 in items -> println("boo")
+  }
+  val fruits = listOf("banana", "avocado", "apple", "kiwifruit")
+  fruits.filter { it.startsWith("a") }.sortedBy { it }.map { it.uppercase() }.forEach {
+    println(it)
+  }
+  val customer = Customer("lim", 22)
+  println(customer.hashCode())
+  println("a * b = ${multi(4,5)}")
+  val positive = items.filter { x -> x > 0 }
+  val negative = items.filter { it < 0 }
+  println("items positive $positive")
+  println("items negative $negative")
 
-    // map
-    val map = mapOf("a" to 1, "b" to 2, "c" to 3)
-    println("map of items : $map")
-    println("map[a] is ${map["a"]}")
-    for ((k, v) in map) {
-        println("$k -> $v")
-    }
-    val p: String by lazy { "hello" }
-    println("lazy val p = $p")
+  // map
+  val map = mapOf("a" to 1, "b" to 2, "c" to 3)
+  println("map of items : $map")
+  println("map[a] is ${map["a"]}")
+  for ((k, v) in map) {
+    println("$k -> $v")
+  }
+  val p: String by lazy { "hello" }
+  println("lazy val p = $p")
 
-    // val myObject =
-    // object : MyAbstractClass() {
-    // override fun doSomething() {
-    // println("do something")
-    // }
-    // override fun sleep() {
-    // println("sleep")
-    // }
-    // }
-    // myObject.doSomething()
-    println("trasform function : when single expression result : ${myTransform("red")}")
-    // collection
-    val numbers = listOf(0, 1, 2, 3, 4)
-    println("list: ${numbers}")
-    // reactive programming
-    fun isEven(number: Int) = { (number % 2) == 0 }
-    val subject: Subject<Int> = PublishSubject.create()
-    subject.map({ isEven(it) }).subscribe({ println("The number is ${(if (it()) "Even" else "Odd")}")})
-    subject.onNext(4)
-    subject.onNext(9)
-    Observable.just("hello reactive world")
-      .subscribe { value -> println(value)}
-    println("fibo(4) is ${fibo(4)}")
-    println("fiboRec(10) is ${fiboRec(10)}")
-    val system = MySystem.Win
-    val product = MyProduct.Checkbox
-    println(factory(system, product))
-    // List sealed class in ch03
-    val data = Cons(1, Cons(2, Nil))
-    println("data structure list ${data}")
-    println(List.dropWhile(List.of(1,2,3), {x-> x==2}))
-    println(List.init(List.of(1,2,3,10)))
-    println(List.foldRight(List.of(1,2,3,4,5,6,7,8,9,10), 0, {x,y -> x + y}))
-    println(List.foldRight(List.of(1,2,3,4,5,6,7,8,9,10), 1, {x,y -> x * y}))
-    println(List.foldLeft(List.of(1,2,3,4,5,6,7,8,9,10), 0, {x,y -> x + y}))
-    // folding
-    println("product with foldRight ${product(List.of(1.0,2.0,3.0))}")
-    println(List.foldRight(Cons(1, Cons(2, Nil)), Nil as List<Int>, {x, y -> Cons(x , y)}))
-    // length
-    println("legnth of xs = ${length(List.of(1,2,3))}")
-    // reverse
-    println("reverse of xs : ${reverse(List.of(1,2,3))}")
-    // foldR with foldL
-    println("foldR with foldL : ${foldRWithFoldL(List.of(1,2,3), 0 ,{ x,y -> x + y })}")
-    println("foldR with foldL : ${foldRWithFoldL(List.of(1,2,3), Nil as List<Int> ,{ x,y -> Cons(x,y) })}")
-    // append with foldL
-    println("append with foldL : ${appendR(List.of(1,2,3), List.of(4,5,6))}")
-    // concatenate
-    println("concatenate : ${concatenate(List.of(List.of(1,2,3), List.of(4,5,6)))}")
-    // time check
-    println(measureTimeMillis { Thread.sleep(100) })
-    // int transformer
-    println("add 1 to list : ${intTransformer(List.of(1,2,3))}")
-    // int to string
-    println("list to string : ${listToString(List.of(1.0,2.0,3.0))}")
+  // val myObject =
+  // object : MyAbstractClass() {
+  // override fun doSomething() {
+  // println("do something")
+  // }
+  // override fun sleep() {
+  // println("sleep")
+  // }
+  // }
+  // myObject.doSomething()
+  println("trasform function : when single expression result : ${myTransform("red")}")
+  // collection
+  val numbers = listOf(0, 1, 2, 3, 4)
+  println("list: ${numbers}")
+  // reactive programming
+  fun isEven(number: Int) = { (number % 2) == 0 }
+  val subject: Subject<Int> = PublishSubject.create()
+  subject
+      .map({ isEven(it) })
+      .subscribe({ println("The number is ${(if (it()) "Even" else "Odd")}") })
+  subject.onNext(4)
+  subject.onNext(9)
+  Observable.just("hello reactive world").subscribe { value -> println(value) }
+  println("fibo(4) is ${fibo(4)}")
+  println("fiboRec(10) is ${fiboRec(10)}")
+  val system = MySystem.Win
+  val product = MyProduct.Checkbox
+  println(factory(system, product))
+  // List sealed class in ch03
+  val data = Cons(1, Cons(2, Nil))
+  println("data structure list ${data}")
+  println(List.dropWhile(List.of(1, 2, 3), { x -> x == 2 }))
+  println(List.init(List.of(1, 2, 3, 10)))
+  println(List.foldRight(List.of(1, 2, 3, 4, 5, 6, 7, 8, 9, 10), 0, { x, y -> x + y }))
+  println(List.foldRight(List.of(1, 2, 3, 4, 5, 6, 7, 8, 9, 10), 1, { x, y -> x * y }))
+  println(List.foldLeft(List.of(1, 2, 3, 4, 5, 6, 7, 8, 9, 10), 0, { x, y -> x + y }))
+  // folding
+  println("product with foldRight ${product(List.of(1.0,2.0,3.0))}")
+  println(List.foldRight(Cons(1, Cons(2, Nil)), Nil as List<Int>, { x, y -> Cons(x, y) }))
+  // length
+  println("legnth of xs = ${length(List.of(1,2,3))}")
+  // reverse
+  println("reverse of xs : ${reverse(List.of(1,2,3))}")
+  // foldR with foldL
+  println("foldR with foldL : ${foldRWithFoldL(List.of(1,2,3), 0 ,{ x,y -> x + y })}")
+  println(
+      "foldR with foldL : ${foldRWithFoldL(List.of(1,2,3), Nil as List<Int> ,{ x,y -> Cons(x,y) })}"
+  )
+  // append with foldL
+  println("append with foldL : ${appendR(List.of(1,2,3), List.of(4,5,6))}")
+  // concatenate
+  println("concatenate : ${concatenate(List.of(List.of(1,2,3), List.of(4,5,6)))}")
+  // time check
+  println(measureTimeMillis { Thread.sleep(100) })
+  // int transformer
+  println("add 1 to list : ${intTransformer(List.of(1,2,3))}")
+  // int to string
+  println("list to string : ${listToString(List.of(1.0,2.0,3.0))}")
 }
