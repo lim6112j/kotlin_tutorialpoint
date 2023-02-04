@@ -58,4 +58,7 @@ class Ch03Test {
   @Test fun reverseTest() {
     assertEquals(List.append(List.of(1,2,3), List.of(3,2,1)), List.of(1,2,3,3,2,1))
   }
+  @Test fun foldRWithFoldLTest () {
+    assertEquals(foldRWithFoldL(List.of(1,2,3), 0 ,{ x,y -> x + y }), 6)
+  }
 }

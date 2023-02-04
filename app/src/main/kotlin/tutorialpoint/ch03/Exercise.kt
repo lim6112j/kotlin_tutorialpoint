@@ -31,3 +31,10 @@ fun <A> foldLengh(xs: List<A>): Int =
 // exe 3.11
 fun <A> reverse(xs: List<A>): List<A> =
   foldLeft(xs, Nil as List<A>, {y, x -> Cons(x, y)})
+// exe 3.12
+fun <A, B> flip(f:(A,B) -> B): (B,A) -> B = {x, y -> f(y,x)}
+fun <A,B> foldRWithFoldL(xs: List<A>, acc: B, f: (A, B) -> B): B =
+  when (xs) {
+    is Nil -> acc 
+    is Cons -> foldLeft(reverse(xs), acc, flip(f))
+  }

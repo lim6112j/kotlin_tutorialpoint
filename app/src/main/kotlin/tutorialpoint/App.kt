@@ -172,4 +172,7 @@ fun main() {
     println("legnth of xs = ${length(List.of(1,2,3))}")
     // reverse
     println("reverse of xs : ${reverse(List.of(1,2,3))}")
+    // foldR with foldL
+    println("foldR with foldL : ${foldRWithFoldL(List.of(1,2,3), 0 ,{ x,y -> x + y })}")
+    println("foldR with foldL : ${foldRWithFoldL(List.of(1,2,3), Nil as List<Int> ,{ x,y -> Cons(x,y) })}")
 }
