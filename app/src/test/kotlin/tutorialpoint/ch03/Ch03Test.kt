@@ -43,4 +43,9 @@ class Ch03Test {
     assertEquals(List.foldRight(List.of(1,2,3,4,5,6,7,8,9,10), 1, {x,y -> x * y}), 3628800)
     assertEquals(List.foldLeft(List.of(1,2,3,4,5,6,7,8,9,10), 0, {x,y -> x + y}), 55)
   }
+  @Test fun lengthTest() {
+    assertEquals(length(List.of(1,2,3)), 3)
+    assertEquals(length(Nil), 0)
+    assertEquals(length(List.of(1)), 1)
+  }
 }

@@ -165,4 +165,9 @@ fun main() {
     println(List.foldRight(List.of(1,2,3,4,5,6,7,8,9,10), 0, {x,y -> x + y}))
     println(List.foldRight(List.of(1,2,3,4,5,6,7,8,9,10), 1, {x,y -> x * y}))
     println(List.foldLeft(List.of(1,2,3,4,5,6,7,8,9,10), 0, {x,y -> x + y}))
+    // folding
+    println("product with foldRight ${product(List.of(1.0,2.0,3.0))}")
+    println(List.foldRight(Cons(1, Cons(2, Nil)), Nil as List<Int>, {x, y -> Cons(x , y)}))
+    // length
+    println("legnth of xs = ${length(List.of(1,2,3))}")
 }
