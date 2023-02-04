@@ -55,3 +55,15 @@ fun <A> concatenate(ll: List<List<A>>): List<A> =
     is Nil -> Nil
     is Cons -> foldRight(ll, Nil as List<A>, {x, acc -> foldRight(x, acc, {y, ac -> Cons(y, ac)})})
   } 
+// exe 3.15
+fun intTransformer(xs: List<Int>): List<Int> =
+  when (xs) {
+    is Nil -> Nil
+    is Cons -> foldRight(xs, Nil as List<Int>, {x, acc -> Cons(x+1, acc)})
+  }
+// exe 3.16
+fun listToString(xs: List<Double>): List<String> =
+  when (xs) {
+    is Nil -> Cons("", Nil)
+    is Cons -> foldRight(xs, Nil as List<String>, {x, acc -> Cons(x.toString(), acc)})
+  }

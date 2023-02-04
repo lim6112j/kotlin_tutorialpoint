@@ -182,4 +182,8 @@ fun main() {
     println("concatenate : ${concatenate(List.of(List.of(1,2,3), List.of(4,5,6)))}")
     // time check
     println(measureTimeMillis { Thread.sleep(100) })
+    // int transformer
+    println("add 1 to list : ${intTransformer(List.of(1,2,3))}")
+    // int to string
+    println("list to string : ${listToString(List.of(1.0,2.0,3.0))}")
 }

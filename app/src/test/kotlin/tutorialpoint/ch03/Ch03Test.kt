@@ -64,4 +64,7 @@ class Ch03Test {
   @Test fun appendTest() {
     assertEquals(appendR(List.of(1,2,3), List.of(1,2,3)), List.of(1,2,3,1,2,3))
   }
+  @Test fun listToString() {
+    assertEquals(listToString(List.of(1.0,2.0,3.0)), List.of("1.0","2.0","3.0"))
+  }
 }
