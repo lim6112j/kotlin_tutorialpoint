@@ -1,4 +1,5 @@
 package tutorialpoint.ch03
+import tutorialpoint.ch03.Cons
 // exe 3.6
 fun product(doubles: List<Double>): Double =
   when (doubles) {
@@ -21,3 +22,12 @@ tailrec fun <A,B> foldLeft(l:List<A>, acc: B, f: (B, A) -> B) : B =
     is Cons -> foldLeft(l.tail, f(acc, l.head), f)
   }
 // exe 3.10
+fun foldSum(ints:List<Int>): Int =
+  foldLeft(ints, 0 , {x,y -> x+y})
+fun foldProduct(doubles: List<Double>): Double =
+  foldLeft(doubles, 1.0, {x,y -> x * y})
+fun <A> foldLengh(xs: List<A>): Int =
+  foldLeft(xs, 0, {acc, _ -> 1 + acc})
+// exe 3.11
+fun <A> reverse(xs: List<A>): List<A> =
+  foldLeft(xs, Nil as List<A>, {y, x -> Cons(x, y)})

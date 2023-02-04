@@ -59,6 +59,11 @@ public sealed class List<out A> {
         is Nil -> acc
         is Cons -> foldLeft(l.tail, f(acc, l.head), f)
       }
+    fun <A> append(l1: List<A>, l2: List<A>): List<A> =
+      when(l1) {
+        is Nil -> l2
+        is Cons -> Cons(l1.head, append(l1.tail, l2))
+      }
   }
 }
 object Nil : List<Nothing>()

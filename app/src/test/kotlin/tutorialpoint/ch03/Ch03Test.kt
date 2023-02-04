@@ -48,4 +48,14 @@ class Ch03Test {
     assertEquals(length(Nil), 0)
     assertEquals(length(List.of(1)), 1)
   }
+  @Test fun foldLeftTest() {
+    assertEquals(foldSum(List.of(1,2,3)), 6)
+    assertEquals(foldProduct(List.of(1.0,2.0,3.0,4.0)), 24.0)
+    assertEquals(foldLengh(List.of(1,2,3)), 3)
+    assertEquals(foldLengh(List.of(1)), 1)
+    assertEquals(foldLengh(Nil), 0)
+  }
+  @Test fun reverseTest() {
+    assertEquals(List.append(List.of(1,2,3), List.of(3,2,1)), List.of(1,2,3,3,2,1))
+  }
 }

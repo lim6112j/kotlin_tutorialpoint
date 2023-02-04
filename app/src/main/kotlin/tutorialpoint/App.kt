@@ -170,4 +170,6 @@ fun main() {
     println(List.foldRight(Cons(1, Cons(2, Nil)), Nil as List<Int>, {x, y -> Cons(x , y)}))
     // length
     println("legnth of xs = ${length(List.of(1,2,3))}")
+    // reverse
+    println("reverse of xs : ${reverse(List.of(1,2,3))}")
 }
