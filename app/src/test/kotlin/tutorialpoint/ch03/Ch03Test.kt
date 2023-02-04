@@ -61,4 +61,7 @@ class Ch03Test {
   @Test fun foldRWithFoldLTest () {
     assertEquals(foldRWithFoldL(List.of(1,2,3), 0 ,{ x,y -> x + y }), 6)
   }
+  @Test fun appendTest() {
+    assertEquals(appendR(List.of(1,2,3), List.of(1,2,3)), List.of(1,2,3,1,2,3))
+  }
 }

@@ -10,6 +10,7 @@ import tutorialpoint.ch02.*
 import tutorialpoint.ch03.List
 import tutorialpoint.ch03.*
 import tutorialpoint.MySystem
+import tutorialpoint.utils.*
 
 class App {
     val greeting: String
@@ -175,4 +176,10 @@ fun main() {
     // foldR with foldL
     println("foldR with foldL : ${foldRWithFoldL(List.of(1,2,3), 0 ,{ x,y -> x + y })}")
     println("foldR with foldL : ${foldRWithFoldL(List.of(1,2,3), Nil as List<Int> ,{ x,y -> Cons(x,y) })}")
+    // append with foldL
+    println("append with foldL : ${appendR(List.of(1,2,3), List.of(4,5,6))}")
+    // concatenate
+    println("concatenate : ${concatenate(List.of(List.of(1,2,3), List.of(4,5,6)))}")
+    // time check
+    println(measureTimeMillis { Thread.sleep(100) })
 }

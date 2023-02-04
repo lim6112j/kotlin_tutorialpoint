@@ -16,6 +16,11 @@ fun <A> length(xs: List<A>): Int =
     is Cons -> 1 + length(xs.tail)
   }
 // exe 3.9
+fun <A,B> foldRight(l:List<A>, acc: B , f: (A,B) -> B) : B =
+  when (l) {
+    is Nil -> acc
+    is Cons -> f(l.head, foldRight(l.tail, acc, f))
+  }
 tailrec fun <A,B> foldLeft(l:List<A>, acc: B, f: (B, A) -> B) : B =
   when (l) {
     is Nil -> acc
@@ -38,3 +43,15 @@ fun <A,B> foldRWithFoldL(xs: List<A>, acc: B, f: (A, B) -> B): B =
     is Nil -> acc 
     is Cons -> foldLeft(reverse(xs), acc, flip(f))
   }
+// exe 3.13
+fun <A> appendR(l1: List<A>, l2: List<A>): List<A> =
+  when (l1) {
+    is Nil -> l2
+    is Cons -> foldRight(l1, l2, {x, acc -> Cons(x, acc)})
+  }
+// exe 3.14
+fun <A> concatenate(ll: List<List<A>>): List<A> =
+  when (ll) {
+    is Nil -> Nil
+    is Cons -> foldRight(ll, Nil as List<A>, {x, acc -> foldRight(x, acc, {y, ac -> Cons(y, ac)})})
+  } 
