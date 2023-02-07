@@ -67,4 +67,7 @@ class Ch03Test {
   @Test fun listToString() {
     assertEquals(listToString(List.of(1.0,2.0,3.0)), List.of("1.0","2.0","3.0"))
   }
-}
+  @Test fun mapTest() {
+    assertEquals(map(List.of(1,2,3), {x -> x * 2}), List.of(2,4,6))
+  }
+  }

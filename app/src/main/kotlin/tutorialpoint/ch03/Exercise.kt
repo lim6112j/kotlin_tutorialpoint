@@ -69,3 +69,9 @@ fun listToString(xs: List<Double>): List<String> =
       is Nil -> Cons("", Nil)
       is Cons -> foldRight(xs, Nil as List<String>, { x, acc -> Cons(x.toString(), acc) })
     }
+// exe 3.17
+fun <A, B> map(xs: List<A>, f: (A) -> (B)): List<B> =
+  when (xs) {
+    is Nil -> Nil
+    is Cons -> Cons(f(xs.head), map(xs.tail, f))
+  }
