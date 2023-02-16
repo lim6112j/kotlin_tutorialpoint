@@ -191,4 +191,8 @@ fun main() {
   println("add 1 to list : ${intTransformer(List.of(1,2,3))}")
   // int to string
   println("list to string : ${listToString(List.of(1.0,2.0,3.0))}")
+  // filter
+  println("filtering nil list : ${filter(Nil as List<Int>, {x -> x % 3 == 0})}")
+  // filter2
+  println("filter2 list : ${filter2(List.of(1,2,3,4,5,6), {x -> x % 2 == 0})}")
 }
