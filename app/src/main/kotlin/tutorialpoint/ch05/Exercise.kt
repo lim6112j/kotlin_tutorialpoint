@@ -19,17 +19,15 @@ val maybeX = maybeTwice(true, { println("hio"); 1 + 41 })
 val maybeX2 = maybeTwice2(true, { println("hi"); 1 + 41; })
 
 // lazy lists or stream
-sealed class Stream<out A> {
-    public companion object {
-        fun <A> Stream<A>.headOption(): Option<A> =
-            when (this) {
-                is Cons -> Some(head())
-                else -> None
-            }
-    }
-}
+sealed class Stream<out A>
 data class Cons<out A>(
     val head: () -> A,
     val tail: () -> Stream<A>,
 ) : Stream<A>()
 object Empty : Stream<Nothing> ()
+
+fun <A> Stream<A>.headOption(): Option<A> =
+    when (this) {
+        is Cons -> Some(head())
+        else -> None
+    }
