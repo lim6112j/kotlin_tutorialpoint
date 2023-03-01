@@ -1,6 +1,7 @@
-import arrow.core.None
-import arrow.core.Option
-import arrow.core.Some
+package tutorialpoint.ch05
+sealed class Option<out A>
+data class Some<out A>(val get: A) : Option<A>()
+object None : Option<Nothing>()
 fun <A> lazyIf(
     cond: Boolean,
     onTrue: () -> A,
@@ -22,8 +23,8 @@ sealed class Stream<out A> {
     public companion object {
         fun <A> Stream<A>.headOption(): Option<A> =
             when (this) {
-                is Empty -> None
                 is Cons -> Some(head())
+                else -> None
             }
     }
 }
