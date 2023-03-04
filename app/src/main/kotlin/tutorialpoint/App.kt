@@ -10,7 +10,7 @@ import tutorialpoint.ch02.*
 import tutorialpoint.ch03.*
 import tutorialpoint.ch03.List
 import tutorialpoint.utils.*
-
+import arrow.core.Option
 class App {
   val greeting: String
     get() {
@@ -191,4 +191,7 @@ fun main() {
   println("add 1 to list : ${intTransformer(List.of(1,2,3))}")
   // int to string
   println("list to string : ${listToString(List.of(1.0,2.0,3.0))}")
+  // arrow
+  val option = Option(43)
+  println("option value : ${option}")
 }
