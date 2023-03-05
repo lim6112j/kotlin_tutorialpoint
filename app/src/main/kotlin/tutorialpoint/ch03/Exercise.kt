@@ -69,3 +69,32 @@ fun listToString(xs: List<Double>): List<String> =
       is Nil -> Cons("", Nil)
       is Cons -> foldRight(xs, Nil as List<String>, { x, acc -> Cons(x.toString(), acc) })
     }
+// exe 3.17
+fun <A, B> map(xs: List<A>, f: (A) -> (B)): List<B> =
+  when (xs) {
+    is Nil -> Nil
+    is Cons -> Cons(f(xs.head), map(xs.tail, f))
+  }
+// exe 3.18
+fun <A> filter(xs:List<A>, f: (A) -> Boolean): List<A> =
+  when  {
+    xs is Nil -> Nil
+    xs is Cons && f(xs.head) -> Cons(xs.head, filter(xs.tail, f))
+    xs is Cons && !f(xs.head) -> filter(xs.tail, f)
+    else -> Nil
+  }
+// exe 3.19
+fun <A, B> flatMap(xa: List<A>, f: (A) -> List<B>): List<B> =
+  when (xa) {
+    is Nil -> Nil
+    is Cons -> concatenate(map(xa, f))
+  }
+// exe 3.20
+fun <A> filter2(xs:List<A>, f: (A) -> Boolean): List<A> =
+  when (xs)  {
+    is Nil -> Nil
+    is Cons -> flatMap(xs, {x -> when (f(x)) {
+      true -> List.of(x)
+      false -> Nil
+    }})
+  }

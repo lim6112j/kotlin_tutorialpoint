@@ -67,4 +67,19 @@ class Ch03Test {
   @Test fun listToString() {
     assertEquals(listToString(List.of(1.0,2.0,3.0)), List.of("1.0","2.0","3.0"))
   }
-}
+  @Test fun mapTest() {
+    assertEquals(map(List.of(1,2,3), {x -> x * 2}), List.of(2,4,6))
+  }
+  @Test fun filterTest() {
+    assertEquals(filter(List.of(1,2,3,4,5,6), {x -> x % 2 == 0}), List.of(2,4,6))
+    assertEquals(filter(List.of(1,2,3,4,5,6), {x -> x % 3 == 0}), List.of(3,6))
+    assertEquals(filter(Nil as List<Int>, {x -> x % 3 == 0}), Nil)
+  }
+  @Test fun flatMapTest() {
+    assertEquals(flatMap(List.of(1,2,3), {x -> List.of(x,x)}), List.of(1,1,2,2,3,3))
+  }
+  @Test fun filter2Test() {
+    assertEquals(filter2(List.of(1,2,3,4,5,6), {x -> x % 2 == 0}), List.of(2,4,6))
+    assertEquals(filter2(List.of(1,2,3,4,5,6), {x -> x % 3 == 0}), List.of(3,6))
+  }
+  }

@@ -194,4 +194,8 @@ fun main() {
   // arrow
   val option = Option(43)
   println("option value : ${option}")
+  // filter
+  println("filtering nil list : ${filter(Nil as List<Int>, {x -> x % 3 == 0})}")
+  // filter2
+  println("filter2 list : ${filter2(List.of(1,2,3,4,5,6), {x -> x % 2 == 0})}")
 }
