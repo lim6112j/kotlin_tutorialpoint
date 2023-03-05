@@ -1,4 +1,7 @@
 package tutorialpoint.ch05
+import tutorialpoint.ch03.Nil 
+import tutorialpoint.ch03.Cons as ConsL 
+import tutorialpoint.ch03.List 
 sealed class Option<out A>
 data class Some<out A>(val get: A) : Option<A>()
 object None : Option<Nothing>()
@@ -31,3 +34,20 @@ fun <A> Stream<A>.headOption(): Option<A> =
         is Cons -> Some(head())
         else -> None
     }
+// exe 5.1
+fun <A> Stream<A>.toList(): List<A> =
+  when (this) {
+    is Empty -> Nil
+    is Cons -> ConsL(this.head(), this.tail().toList())
+  }
+// exe 5.2
+fun <A> Stream<A>.take(n: Int): Stream<A> {
+  tailrec fun <A> go(stream: Stream<A>, acc: Stream<A>, n: Int): Stream<A> =
+    when {
+      stream is Empty -> acc
+      n == 0 -> acc
+      stream is Cons -> go(stream.tail(), Cons(stream.head, {-> acc}), n-1)
+      else -> Empty
+    }
+  return go(this, Empty, n)
+}
