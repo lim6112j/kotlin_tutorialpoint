@@ -44,9 +44,9 @@ application {
     // Define the main class for the application.
     mainClass.set("tutorialpoint.AppKt")
 }
-//tasks.withType<KotlinCompile> {
-//    kotlinOptions {
-//        freeCompilerArgs = listOf("-Xjsr305=strict")
-//        jvmTarget = JavaVersion.VERSION_17.toString()
-//    }
-//}
+tasks.withType<KotlinCompile> {
+    kotlinOptions {
+        freeCompilerArgs = listOf("-Xjsr305=strict")
+        jvmTarget = JavaVersion.VERSION_17.toString()
+    }
+}

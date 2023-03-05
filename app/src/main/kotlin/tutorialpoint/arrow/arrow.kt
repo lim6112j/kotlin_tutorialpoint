@@ -1,6 +1,4 @@
 package tutorialpoint.arrow
-import arrow.core.Either
-import arrow.core.computations.nullable.null
 object Lettuce
 object Knife
 object Salad
