@@ -10,6 +10,7 @@ import tutorialpoint.ch02.*
 import tutorialpoint.ch03.*
 import tutorialpoint.ch03.List
 import tutorialpoint.utils.*
+import tutorialpoint.arrow.*
 import arrow.core.Option
 class App {
   val greeting: String
@@ -198,4 +199,6 @@ fun main() {
   println("filtering nil list : ${filter(Nil as List<Int>, {x -> x % 3 == 0})}")
   // filter2
   println("filter2 list : ${filter2(List.of(1,2,3,4,5,6), {x -> x % 2 == 0})}")
+  // arrow
+  println("prepare lunch : ${prepareLunch()}")
 }
