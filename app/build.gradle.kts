@@ -38,6 +38,9 @@ dependencies {
     implementation("io.reactivex.rxjava3:rxkotlin:3.0.1")
     // arrow for functional
     implementation("io.arrow-kt:arrow-core:1.1.2")
+    // coroutine
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.4")
+
 }
 
 application {

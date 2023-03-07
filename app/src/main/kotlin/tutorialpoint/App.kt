@@ -11,7 +11,9 @@ import tutorialpoint.ch03.*
 import tutorialpoint.ch03.List
 import tutorialpoint.utils.*
 import tutorialpoint.arrow.*
+import tutorialpoint.arrow.prepareLunch
 import arrow.core.Option
+import kotlinx.coroutines.*
 class App {
   val greeting: String
     get() {
@@ -101,7 +103,7 @@ fun factory(system: MySystem, product: MyProduct): String {
   }
 }
 
-fun main() {
+fun main() = runBlocking<Unit> {
   println(App().greeting)
   println(describe(1))
   for (x in 9 downTo 0 step 3) {
@@ -200,5 +202,7 @@ fun main() {
   // filter2
   println("filter2 list : ${filter2(List.of(1,2,3,4,5,6), {x -> x % 2 == 0})}")
   // arrow
-  println("prepare lunch : ${prepareLunch()}")
+  launch {
+    println("prepareLunch : ${prepareLunch()}")
+  }
 }
