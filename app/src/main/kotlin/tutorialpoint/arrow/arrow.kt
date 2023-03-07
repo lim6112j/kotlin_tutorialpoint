@@ -50,8 +50,8 @@ fun reciprocal(i: Int): Either<Error, Double> =
 
 fun stringify(d: Double): String = d.toString()
 
-// flatmap :: (a -> mb) -> ma -> mb, ma ~> (a -> mb) -> mb, ma -> (a -> mb) -> mb
-// map :: (a -> b) -> ma -> mb
+// flatmap :: Monad m => (a -> mb) -> ma -> mb, ma ~> (a -> mb) -> mb, ma -> (a -> mb) -> mb
+// map :: Functor f => (a -> b) -> fa -> fb
 // check if, (a -> mb) -> ma -> mmb e.g. m = [], result will be [[]]
 fun runChain(s: String): Either<Error, String> =
     parse(s).flatMap { reciprocal(it) }.map { x -> stringify(x) }
