@@ -13,6 +13,7 @@ import tutorialpoint.utils.*
 import tutorialpoint.arrow.*
 import tutorialpoint.arrow.prepareLunch
 import arrow.core.Option
+import arrow.core.Either
 import kotlinx.coroutines.*
 class App {
   val greeting: String
@@ -205,4 +206,14 @@ fun main() = runBlocking<Unit> {
   launch {
     println("prepareLunch : ${prepareLunch()}")
   }
+  val x = runChain("2")
+  val value = 
+    when (x) {
+      is Either.Left -> when (x.value) {
+        is Error.NotANumber -> "Not a number"
+        is Error.NoZeroReciprocal -> "Can't take reciprocal of 0!"
+      }
+      is Either.Right -> "Got reciprocal : ${x.value}"
+    }
+  println("runchain x = 2 : ${value}")
 }
