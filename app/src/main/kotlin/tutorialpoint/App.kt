@@ -227,7 +227,7 @@ fun main() = runBlocking<Unit> {
     println("friends printing : name ${friend?.name}, aged ${friend?.age}")
   }
   // functional iterator pattern
-  println("\nfuntional style iterator design pattern\n ----------------------------")
+  println("\nfunctional style iterator design pattern\n ----------------------------")
   val ffriends = FFriends(listOf(FFriend("ben", 22), FFriend("John", 20)))
   tailrec fun ffriendsRec() : Unit =
       if(ffriends.hasMore()){

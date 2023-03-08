@@ -1,10 +1,14 @@
 package tutorialpoint.designpattern.iterator
-interface MyInterface {
+interface MyIterator {
   fun hasMore() : Boolean
   fun next() : Friend?
 }
+interface Friends {
+  val size: Int
+  fun createFriendsIterator() : MyIterator
+}
 class Friend(val name: String, val age: Int) 
-class FriendsIterator(val friends: MyFriends) : MyInterface {
+class FriendsIterator(val friends: MyFriends) : MyIterator {
   private var currentPosition = 0
   override fun hasMore(): Boolean  {
     return friends.size > currentPosition
@@ -17,10 +21,6 @@ class FriendsIterator(val friends: MyFriends) : MyInterface {
     }
     return null
   } 
-}
-interface Friends {
-  val size: Int
-  fun createFriendsIterator() : FriendsIterator
 }
 class MyFriends(val friends: List<Friend>,) : Friends {
   override val size = friends.size 
