@@ -16,6 +16,7 @@ import arrow.core.Option
 import arrow.core.Either
 import kotlinx.coroutines.*
 import tutorialpoint.designpattern.iterator.*
+import tutorialpoint.designpattern.fIterator.*
 class App {
   val greeting: String
     get() {
@@ -224,4 +225,14 @@ fun main() = runBlocking<Unit> {
     val friend = iterator.next()
     println("friends printing : name ${friend?.name}, aged ${friend?.age}")
   }
+  // functional iterator pattern
+  val ffriends = FFriends(listOf(FFriend("ben", 22), FFriend("John", 20)))
+  fun ffriendsRec() : Unit =
+      if(ffriends.hasMore()){
+      println("ffriend name ${ffriends.next()?.name}")
+      ffriendsRec()
+      }
+      else {println("end of friends")
+    }
+  ffriendsRec()
 }
