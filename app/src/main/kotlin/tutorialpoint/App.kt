@@ -15,6 +15,7 @@ import tutorialpoint.arrow.prepareLunch
 import arrow.core.Option
 import arrow.core.Either
 import kotlinx.coroutines.*
+import tutorialpoint.designpattern.iterator.*
 class App {
   val greeting: String
     get() {
@@ -216,4 +217,11 @@ fun main() = runBlocking<Unit> {
       is Either.Right -> "Got reciprocal : ${x.value}"
     }
   println("runchain x = 2 : ${value}")
+  // iterator pattern
+  val friends = MyFriends(listOf(Friend("ben", 22),Friend("John", 20)))
+  val iterator = friends.createFriendsIterator()
+  while(iterator.hasMore()) {
+    val friend = iterator.next()
+    println("friends printing : name ${friend?.name}, aged ${friend?.age}")
+  }
 }
