@@ -219,6 +219,7 @@ fun main() = runBlocking<Unit> {
     }
   println("runchain x = 2 : ${value}")
   // iterator pattern
+  println("\noop style iterator design pattern\n ---------------------------")
   val friends = MyFriends(listOf(Friend("ben", 22),Friend("John", 20)))
   val iterator = friends.createFriendsIterator()
   while(iterator.hasMore()) {
@@ -226,13 +227,15 @@ fun main() = runBlocking<Unit> {
     println("friends printing : name ${friend?.name}, aged ${friend?.age}")
   }
   // functional iterator pattern
+  println("\nfuntional style iterator design pattern\n ----------------------------")
   val ffriends = FFriends(listOf(FFriend("ben", 22), FFriend("John", 20)))
-  fun ffriendsRec() : Unit =
+  tailrec fun ffriendsRec() : Unit =
       if(ffriends.hasMore()){
-      println("ffriend name ${ffriends.next()?.name}")
+      val friend = ffriends.next()
+      println("ffriend printing : name ${friend?.name}, aged ${friend?.age}")
       ffriendsRec()
       }
-      else {println("end of friends")
+      else {println("end of friends\n")
     }
   ffriendsRec()
 }
