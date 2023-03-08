@@ -241,4 +241,5 @@ fun main() = runBlocking<Unit> {
   ffriendsRec()
   // pure.kt
   println("simpleRng : ${SimpleRNG(10).nextInt()}")
+  println("double 0..1 : ${double(SimpleRNG(101))}")
 }

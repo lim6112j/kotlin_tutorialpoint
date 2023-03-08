@@ -11,3 +11,10 @@ data class SimpleRNG(val seed: Long) : RNG {
         return n to nextRNG
     }
 }
+
+// exe; 6.2
+fun double(rng: RNG): Pair<Double, RNG> {
+    val (n, newRNG) = rng.nextInt()
+    val doubleVal: Double = n.toDouble() / Int.MAX_VALUE
+    return doubleVal to newRNG
+}
