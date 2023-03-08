@@ -17,6 +17,7 @@ import arrow.core.Either
 import kotlinx.coroutines.*
 import tutorialpoint.designpattern.iterator.*
 import tutorialpoint.designpattern.fIterator.*
+import tutorialpoint.ch06.*
 class App {
   val greeting: String
     get() {
@@ -238,4 +239,6 @@ fun main() = runBlocking<Unit> {
       else {println("end of friends\n")
     }
   ffriendsRec()
+  // pure.kt
+  println("simpleRng : ${SimpleRNG(10).nextInt()}")
 }
