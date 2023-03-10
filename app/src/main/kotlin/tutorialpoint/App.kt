@@ -14,6 +14,7 @@ import tutorialpoint.arrow.*
 import tutorialpoint.arrow.prepareLunch
 import arrow.core.Option
 import arrow.core.Either
+import arrow.core.getOrElse
 import kotlinx.coroutines.*
 import tutorialpoint.designpattern.iterator.*
 import tutorialpoint.designpattern.fIterator.*
@@ -21,6 +22,7 @@ import tutorialpoint.ch06.*
 import tutorialpoint.designpattern.observer.*
 import tutorialpoint.designpattern.observer.fObserver.*
 import tutorialpoint.designpattern.state.*
+import tutorialpoint.designpattern.railway.*
 class App {
   val greeting: String
     get() {
@@ -268,5 +270,9 @@ fun main() = runBlocking<Unit> {
   // state
   val startState = Stop to "start"
   println("-----------------state pattern ----------------------")
-  print(startState.machine(Do).machine(Cancel).machine(Do).second)
+  println(startState.machine(Do).machine(Cancel).machine(Do).second)
+  // railway
+  val output = startVal.flatMap { searchBus(it) }.flatMap{filterBus(it)}.flatMap{limitBus(it)}.getOrElse{"no value"}
+  println("---------railway pattern ----------")
+  println("railway pattern : ${output}")
 }
