@@ -10,12 +10,12 @@ import tutorialpoint.ch02.*
 import tutorialpoint.ch03.*
 import tutorialpoint.ch03.List
 import tutorialpoint.utils.*
-import tutorialpoint.arrow.*
-import tutorialpoint.arrow.prepareLunch
 import arrow.core.Option
 import arrow.core.Either
 import arrow.core.getOrElse
 import arrow.core.computations.option
+import arrow.core.computations.either
+import arrow.core.continuations.effect
 import kotlinx.coroutines.*
 import tutorialpoint.designpattern.iterator.*
 import tutorialpoint.designpattern.fIterator.*
@@ -23,7 +23,8 @@ import tutorialpoint.ch06.*
 import tutorialpoint.designpattern.observer.*
 import tutorialpoint.designpattern.observer.fObserver.*
 import tutorialpoint.designpattern.state.*
-import tutorialpoint.designpattern.railway.*
+import tutorialpoint.arrow.*
+import tutorialpoint.arrow.prepareLunch
 class App {
   val greeting: String
     get() {
@@ -284,4 +285,13 @@ fun main() = runBlocking<Unit> {
     val result = limitBus(buses2).bind()
     println("option comprehension : $result")
   }
+  // arrow either
+  val resultEither = effect<NotFound,String> {
+    val v1 = startEither.bind()
+    val v2 = getBusEither(v1).bind()
+    val v3 = filterBusEither(v2).bind()
+    val v4 = limitBusEither(v3).bind()
+    v4
+  }
+  println("result of either comprehension : $resultEither")
 }

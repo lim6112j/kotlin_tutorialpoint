@@ -1,4 +1,4 @@
-package tutorialpoint.designpattern.railway
+package tutorialpoint.arrow
 
 import arrow.core.Option
 import arrow.core.Some
@@ -19,5 +19,4 @@ fun limitBus(arg: String): Option<String> =
     0 -> None
     else -> Some("value")
   }
-
 
