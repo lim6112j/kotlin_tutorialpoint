@@ -20,6 +20,7 @@ import tutorialpoint.designpattern.fIterator.*
 import tutorialpoint.ch06.*
 import tutorialpoint.designpattern.observer.*
 import tutorialpoint.designpattern.observer.fObserver.*
+import tutorialpoint.designpattern.state.*
 class App {
   val greeting: String
     get() {
@@ -209,7 +210,7 @@ fun main() = runBlocking<Unit> {
   println("filter2 list : ${filter2(List.of(1,2,3,4,5,6), {x -> x % 2 == 0})}")
   // arrow
   launch {
-    println("prepareLunch : ${prepareLunch()}")
+    println("\nprepareLunch : ${prepareLunch()}")
   }
   val x = runChain("2")
   val value = 
@@ -264,4 +265,8 @@ fun main() = runBlocking<Unit> {
   subscriber.unSubscribe(publisher)
   println("fifth notifying -----------------")
   publisher.notify()
+  // state
+  val startState = Stop to "start"
+  println("-----------------state pattern ----------------------")
+  print(startState.machine(Do).machine(Cancel).machine(Do).second)
 }
