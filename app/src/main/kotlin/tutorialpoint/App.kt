@@ -17,6 +17,8 @@ import arrow.core.Either
 import kotlinx.coroutines.*
 import tutorialpoint.designpattern.iterator.*
 import tutorialpoint.designpattern.fIterator.*
+import tutorialpoint.designpattern.observer.*
+import tutorialpoint.designpattern.observer.fObserver.*
 class App {
   val greeting: String
     get() {
@@ -238,4 +240,24 @@ fun main() = runBlocking<Unit> {
       else {println("end of friends\n")
     }
   ffriendsRec()
+  // observer
+  var subscribers = Subscribers(listOf())
+  val publisher = Publisher(1, "Lim", subscribers)
+  val subscriber = Subscriber(2, "Jane")
+  val subscriber2 = Subscriber(3, "Tom")
+  val subscriber3 = Subscriber(3, "Mary")
+  println("first notifying ------------------")
+  publisher.notify()
+  subscriber.subscribe(publisher)
+  println("second notifying ------------------")
+  publisher.notify()
+  subscriber2.subscribe(publisher)
+  println("third notifying ------------------")
+  publisher.notify()
+  subscriber3.subscribe(publisher)
+  println("forth notifying ------------------")
+  publisher.notify()
+  subscriber.unSubscribe(publisher)
+  println("fifth notifying -----------------")
+  publisher.notify()
 }
