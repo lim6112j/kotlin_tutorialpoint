@@ -15,6 +15,7 @@ import tutorialpoint.arrow.prepareLunch
 import arrow.core.Option
 import arrow.core.Either
 import arrow.core.getOrElse
+import arrow.core.computations.option
 import kotlinx.coroutines.*
 import tutorialpoint.designpattern.iterator.*
 import tutorialpoint.designpattern.fIterator.*
@@ -275,4 +276,12 @@ fun main() = runBlocking<Unit> {
   val output = startVal.flatMap { searchBus(it) }.flatMap{filterBus(it)}.flatMap{limitBus(it)}.getOrElse{"no value"}
   println("---------railway pattern ----------")
   println("railway pattern : ${output}")
+  // arrow option comprehension
+  option {
+    val buses = startVal.bind()
+    val buses1= searchBus(buses).bind()
+    val buses2 = filterBus(buses1).bind()
+    val result = limitBus(buses2).bind()
+    println("option comprehension : $result")
+  }
 }
