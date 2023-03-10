@@ -17,6 +17,7 @@ import arrow.core.Either
 import kotlinx.coroutines.*
 import tutorialpoint.designpattern.iterator.*
 import tutorialpoint.designpattern.fIterator.*
+import tutorialpoint.ch06.*
 import tutorialpoint.designpattern.observer.*
 import tutorialpoint.designpattern.observer.fObserver.*
 class App {
@@ -240,6 +241,9 @@ fun main() = runBlocking<Unit> {
       else {println("end of friends\n")
     }
   ffriendsRec()
+  // pure.kt
+  println("simpleRng : ${SimpleRNG(10).nextInt()}")
+  println("double 0..1 : ${double(SimpleRNG(101))}")
   // observer
   var subscribers = Subscribers(listOf())
   val publisher = Publisher(1, "Lim", subscribers)
