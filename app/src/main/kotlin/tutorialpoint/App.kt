@@ -26,6 +26,7 @@ import tutorialpoint.designpattern.state.*
 import tutorialpoint.arrow.*
 import tutorialpoint.arrow.prepareLunch
 import tutorialpoint.designpattern.command.*
+import tutorialpoint.designpattern.bridge.*
 class App {
   val greeting: String
     get() {
@@ -306,4 +307,10 @@ fun main() = runBlocking<Unit> {
   val invoker3 = invoker2.execute(shortcut, CopyCommand)
   val invoker4 = invoker3.execute(menu, CopyCommand)
   invoker4.invoke()
+  // bridge oop
+  val circle = Circle(Red)
+  val rect = Rectangle(Blue)
+  println("-------------bridge oop pattern-----------------")
+  println("Circle shape has color of ${circle.color.getColor()}")
+  println("Rectangle shape has color of ${rect.color.getColor()}")
 }
