@@ -25,6 +25,7 @@ import tutorialpoint.designpattern.observer.fObserver.*
 import tutorialpoint.designpattern.state.*
 import tutorialpoint.arrow.*
 import tutorialpoint.arrow.prepareLunch
+import tutorialpoint.designpattern.command.*
 class App {
   val greeting: String
     get() {
@@ -294,4 +295,15 @@ fun main() = runBlocking<Unit> {
     v4
   }
   println("result of either comprehension : $resultEither")
+  // command
+  println("-----------------Command Pattern---------------")
+  val button = Button
+  val shortcut = Shortcut
+  val menu = Menu
+  val invoker = Invoker(listOf())
+  val invoker1 = invoker.execute(button, CutCommand)
+  val invoker2 = invoker1.execute(button, CopyCommand)
+  val invoker3 = invoker2.execute(shortcut, CopyCommand)
+  val invoker4 = invoker3.execute(menu, CopyCommand)
+  invoker4.invoke()
 }
