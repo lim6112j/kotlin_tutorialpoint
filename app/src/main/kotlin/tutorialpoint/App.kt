@@ -27,6 +27,7 @@ import tutorialpoint.arrow.*
 import tutorialpoint.arrow.prepareLunch
 import tutorialpoint.designpattern.command.*
 import tutorialpoint.designpattern.bridge.*
+import tutorialpoint.designpattern.openclosed.*
 class App {
   val greeting: String
     get() {
@@ -313,4 +314,9 @@ fun main() = runBlocking<Unit> {
   println("-------------bridge oop pattern-----------------")
   println("Circle shape has color of ${circle.color.getColor()}")
   println("Rectangle shape has color of ${rect.color.getColor()}")
+  println("-------------open-closed strategy pattern----------------") 
+  val order = Order(LandShipping())
+  println("${order.getShippingCost()}")
+  order.setShippingType(AirShipping())
+  println("${order.getShippingCost()}")
 }
